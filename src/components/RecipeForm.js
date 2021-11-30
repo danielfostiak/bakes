@@ -23,7 +23,10 @@ function RecipeForm(props) {
       return;
     }
 
-    setRecipe([...recipe, { name: CurrentIngredient, amount: currentAmount }]);
+    setRecipe([
+      ...recipe,
+      { name: CurrentIngredient, amount: currentAmount.replace(",", "") },
+    ]);
     setCurrentIngredient("");
     setCurrentAmount("");
   };
@@ -35,7 +38,7 @@ function RecipeForm(props) {
   };
 
   const handleUpload = async function () {
-    const recipeObj = {};
+    const recipeObj = { recipeName: name };
     recipe.forEach((item) => {
       recipeObj[item.name] = item.amount;
     });

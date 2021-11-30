@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import firebase from "firebase/app";
 import "firebase/firestore";
+import Catalog from "./components/Catalog";
 
 firebase.initializeApp({
   apiKey: process.env.REACT_APP_API_KEY,
@@ -27,14 +28,14 @@ function App() {
       });
       setRecipes(list);
     }
-    // fetchData(); // Undo to resume fetching
+    fetchData(); // Undo to resume fetching
   }, []);
 
   return (
     <div>
       <Header />
 
-      {/* Accordian of recipes */}
+      <Catalog recipes={recipes} />
     </div>
   );
 }
